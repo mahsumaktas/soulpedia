@@ -1,27 +1,42 @@
 import { souls } from "@/data/souls";
-import SoulCard from "@/components/SoulCard";
+import SoulGallery from "@/components/SoulGallery";
 
 export default function Home() {
   return (
-    <main className="max-w-6xl mx-auto px-4 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold mb-4">
-          soul<span className="text-purple-400">pedia</span>
-        </h1>
-        <p className="text-gray-400 text-lg max-w-xl mx-auto">
-          Open-source soul and persona library for Claude Code, Gemini CLI, Codex CLI, and other AI tools.
-          Inspired by{" "}
-          <a href="https://prompts.chat" className="text-purple-400 hover:underline">
-            prompts.chat
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+      <header className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">🧠</span>
+            <span className="font-bold text-xl text-gray-900 dark:text-white">soulpedia</span>
+          </div>
+          <a href="https://github.com/mahsumaktas/soulpedia" target="_blank" rel="noopener noreferrer"
+            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+            ⭐ GitHub
           </a>
-          .
+        </div>
+      </header>
+      <section className="max-w-6xl mx-auto px-4 py-16 text-center">
+        <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">AI Souls & Personas</h1>
+        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
+          Open-source persona library for Claude Code, Gemini CLI, and other AI tools.
         </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {souls.map((soul) => (
-          <SoulCard key={soul.id} soul={soul} />
-        ))}
-      </div>
-    </main>
+        <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
+          <span><strong className="text-gray-900 dark:text-white">{souls.length}</strong> souls</span>
+          <span>·</span>
+          <span><strong className="text-gray-900 dark:text-white">4</strong> tools</span>
+          <span>·</span>
+          <span><strong className="text-gray-900 dark:text-white">MIT</strong></span>
+        </div>
+      </section>
+      <main className="max-w-6xl mx-auto px-4 pb-16">
+        <SoulGallery souls={souls} />
+      </main>
+      <footer className="border-t border-gray-200 dark:border-gray-800 py-8 text-center text-sm text-gray-500">
+        <a href="https://github.com/mahsumaktas/soulpedia" className="hover:text-gray-900 transition-colors">
+          Contribute a soul on GitHub
+        </a>
+      </footer>
+    </div>
   );
 }
