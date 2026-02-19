@@ -1,0 +1,30 @@
+{
+  "name": "soulpedia",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19",
+    "clsx": "^2",
+    "lucide-react": "^0.469",
+    "js-yaml": "^4"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/js-yaml": "^4",
+    "typescript": "^5",
+    "tailwindcss": "^3",
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "eslint": "^9",
+    "eslint-config-next": "^15"
+  }
+}
