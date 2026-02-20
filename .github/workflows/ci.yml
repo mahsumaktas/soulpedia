@@ -11,4 +11,4 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - name: Validate Soul YAMLs
-        run: npx ajv validate -s souls/schema.json -d "souls/*.yml" --valid
+        run: npx ajv validate -s souls/schema.json -d "souls/*.yml"

@@ -86,7 +86,7 @@ export default function SoulGallery({ souls }: { souls: Soul[] }) {
         <div className="text-center py-16 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 rounded-2xl border border-dashed border-gray-300 dark:border-gray-800">
           <span className="text-4xl mb-4 block">👻</span>
           <h3 className="text-xl font-medium mb-2 text-gray-900 dark:text-white">No souls found</h3>
-          <p>We couldn't find any persona matching "{searchQuery}". Try a different term or filter.</p>
+          <p>We couldn&apos;t find any persona matching &quot;{searchQuery}&quot;. Try a different term or filter.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
