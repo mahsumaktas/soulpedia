@@ -223,4 +223,55 @@ program
     console.log(green(`\n🧹 BAŞARILI! "${soulName}" ruhu ${targetFile} dosyasından tamamen temizlendi.\n`));
   });
 
+// 5. CREATE KOMUTU (Sıfırdan Ruh Yaratma Sihirbazı)
+program
+  .command('create <soul-id>')
+  .description('Sıfırdan yepyeni bir ruh (YAML dosyası) tasarlamak için kurulum sihirbazını başlatır.')
+  .action(async (soulId) => {
+    console.log(blue(`\n🧙‍♂️ "${soulId}" için Soulpedia Ruh Yaratma Sihirbazı'na Hoş Geldiniz!\n`));
+    
+    const answers = await inquirer.prompt([
+      { type: 'input', name: 'name', message: 'Ruhun (Persona) görünen adı ne olacak?:' },
+      { type: 'input', name: 'emoji', message: 'Ruh için tek bir emoji seçin (Örn: 🤖):', default: '🤖' },
+      { type: 'input', name: 'description', message: 'Ne işe yaradığını kısaca açıklayın (1 cümle):' },
+      { type: 'input', name: 'category', message: 'Kategorisi nedir? (Coding, Mentor, Architecture vs.):', default: 'General' },
+      { type: 'input', name: 'author', message: 'Yazar adı (Github kullanıcı adınız):' },
+      { type: 'editor', name: 'prompt', message: 'System Prompt (Temel Görev/Kimlik metni) girin:' }
+    ]);
+
+    const yamlObj = {
+      id: soulId,
+      name: answers.name,
+      emoji: answers.emoji,
+      description: answers.description,
+      category: answers.category,
+      tools: ['Claude Code', 'Gemini CLI', 'Cursor'],
+      author: answers.author,
+      version: "1.0",
+      prompt: answers.prompt,
+      tone: ["Example Tone 1", "Example Tone 2"],
+      bans: ["Example Ban (Never do X)"],
+      memory_injections: ["Example Core Belief 1"],
+      variables: []
+    };
+
+    const yamlString = yaml.dump(yamlObj, { lineWidth: -1 });
+    
+    // Klasör kontrolü
+    const soulsDir = path.join(process.cwd(), 'souls');
+    if (!fs.existsSync(soulsDir)) {
+      fs.mkdirSync(soulsDir, { recursive: true });
+    }
+
+    const filePath = path.join(soulsDir, `${soulId}.yml`);
+    if (fs.existsSync(filePath)) {
+      console.log(red(`\n❌ Hata: "${soulId}.yml" dosyası zaten var.\n`));
+      process.exit(1);
+    }
+
+    fs.writeFileSync(filePath, yamlString);
+    console.log(green(`\n🎉 MUHTEŞEM! Yeni ruhun iskeleti "${filePath}" adresinde başarıyla oluşturuldu.`));
+    console.log(yellow(`\n👉 Şimdi gidip bu dosyayı açın; 'tone', 'bans' ve 'memory_injections' gibi detaylı kısımları kendi vizyonunuza göre doldurun.\n`));
+  });
+
 program.parse(process.argv);

@@ -1,6 +1,28 @@
 {
   "name": "soulpedia",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "description": "Open-source soul and persona management CLI for AI tools like Claude Code, Gemini CLI, Cursor, and Windsurf.",
+  "author": "Mahsum Aktas",
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "persona",
+    "soul",
+    "prompt",
+    "claude-code",
+    "gemini-cli",
+    "cursor",
+    "windsurf",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahsumaktas/soulpedia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mahsumaktas/soulpedia/issues"
+  },
+  "homepage": "https://soulpedia.vercel.app",
   "private": false,
   "bin": {
     "soulpedia": "./bin/soulpedia.js"
