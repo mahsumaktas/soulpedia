@@ -4,6 +4,9 @@
   <p>The open-source soul and persona marketplace for AI CLI tools.</p>
   
   <p>
+    <a href="https://soulpedia.vercel.app/">
+      <img src="https://img.shields.io/badge/Vercel-Live-black?logo=vercel" alt="Vercel Live" />
+    </a>
     <a href="https://github.com/mahsumaktas/soulpedia/actions/workflows/ci.yml">
       <img src="https://github.com/mahsumaktas/soulpedia/actions/workflows/ci.yml/badge.svg" alt="CI Status" />
     </a>
@@ -72,7 +75,7 @@ memory_injections:
 
 ## 🌐 Web Interface
 
-Explore, filter, and search through all souls via the [Next.js Web Interface]().
+Explore, filter, and search through all souls via the [Next.js Web Interface](https://soulpedia.vercel.app/).
 
 1. **Live Search:** Find souls by name, tags, or description instantly.
 2. **Detailed Breakdown:** View the soul's strict bans, communication tone, and system prompts beautifully formatted.
@@ -107,7 +110,7 @@ Check out our full [CONTRIBUTING.md](CONTRIBUTING.md) guide.
 - [x] v0.0.6 — UI: Live Search bar integration (#6)
 - [x] v0.0.7 — CI: YAML validator GitHub Action on PR (#8)
 - [x] v0.0.8 — CLI: `soulpedia install <soul>` script to inject files locally
-- [ ] v0.1.0 — Vercel Deploy & Global npm package release
+- [x] v0.1.0 — Vercel Deploy & Global npm package release
 
 ---
 <div align="center">
