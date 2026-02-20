@@ -1,0 +1,23 @@
+---
+name: "\U0001F9E0 Submit a New Soul"
+about: Propose a new AI persona (soul) to be added to the Soulpedia database.
+title: "[SOUL] "
+labels: new-soul
+assignees: ''
+---
+
+### Soul Name
+(e.g., The Architect, Cynical Reviewer)
+
+### Intended Tools
+(e.g., Claude Code, Gemini CLI, OpenAI, OpenClaw)
+
+### Proposed Description
+A short sentence explaining what this soul does.
+
+### Why do we need this soul?
+How is this soul different from the existing ones? What problem does it solve?
+
+### Ready to open a PR?
+- [ ] Yes, I will fork and open a Pull Request with the `.yml` file.
+- [ ] No, I'm just suggesting the idea. I want someone else to write the prompt.

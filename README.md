@@ -1,76 +1,115 @@
-# soulpedia 🧠
+<div align="center">
+  <img src="https://em-content.zobj.net/source/apple/391/brain_1f9e0.png" width="100" alt="Brain Emoji" />
+  <h1>soulpedia</h1>
+  <p>The open-source soul and persona marketplace for AI CLI tools.</p>
+  
+  <p>
+    <a href="https://github.com/mahsumaktas/soulpedia/actions/workflows/ci.yml">
+      <img src="https://github.com/mahsumaktas/soulpedia/actions/workflows/ci.yml/badge.svg" alt="CI Status" />
+    </a>
+    <a href="https://github.com/mahsumaktas/soulpedia/tree/main/souls">
+      <img src="https://img.shields.io/badge/souls-5+-purple" alt="Souls Count" />
+    </a>
+    <a href="https://github.com/mahsumaktas/soulpedia/pulls">
+      <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" />
+    </a>
+    <a href="LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License" />
+    </a>
+  </p>
+</div>
 
-[![CI](https://github.com/mahsumaktas/soulpedia/actions/workflows/ci.yml/badge.svg)](https://github.com/mahsumaktas/soulpedia/actions)
-[![Souls](https://img.shields.io/badge/souls-5-purple)](https://github.com/mahsumaktas/soulpedia/tree/main/souls)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/mahsumaktas/soulpedia/pulls)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<hr/>
 
-> Open-source soul and persona marketplace for Claude Code, Gemini CLI, and other AI tools.
+> **Stop prompting. Start giving them a soul.** 
+> Browse, copy, and contribute advanced AI personas (souls) that redefine how your AI assistants (Claude Code, Gemini CLI, Cursor, OpenClaw) think, talk, and behave.
 
-Browse, copy, and contribute AI personas (souls) that change how your AI assistant thinks, talks, and behaves.
+## 🚀 Quick Start (CLI)
 
-## What is a Soul?
-
-A soul is a YAML file that defines an AI persona — its identity, tone, coaching style, and behavioral rules. Drop it into your AI tool's system prompt.
-
-```yaml
-# souls/tough-mentor.yml
-name: Tough Mentor
-emoji: 🐕
-description: No excuses. Accountability first. Tough love that gets results.
-tools:
-  - claude-code
-  - gemini-cli
-prompt: |
-  You are a direct, no-nonsense mentor. You hold the user accountable,
-  challenge excuses, and push for action over planning.
-```
-
-## Featured Souls
-
-| Soul | Emoji | Style | Best For |
-|------|-------|-------|----------|
-| Tough Mentor | 🐕 | Direct, accountability-first | Goal setting, productivity |
-| Socrates | 🏛️ | Questioning, Socratic method | Deep thinking, decisions |
-| Drill Sergeant | 🪖 | Strict, no tolerance | Breaking bad habits |
-| Rubber Duck | 🦆 | Patient, asks questions back | Debugging, rubber ducking |
-| Türk Mentor | 🇹🇷 | Turkish, cultural context | Turkish-speaking users |
-
-## Usage
-
-### Claude Code
-
-Copy the prompt from any soul's YAML into your `SOUL.md` or `CLAUDE.md`.
-
-### Gemini CLI
+No need to copy-paste manually. Inject a soul directly into your current directory using the Soulpedia CLI.
 
 ```bash
-gemini --system-prompt "$(cat souls/tough-mentor.yml | yq .prompt)"
+# Inject the 'paranoid-secops' soul to your local Claude Code configuration
+npx github:mahsumaktas/soulpedia install paranoid-secops --target claude
+
+# Inject the 'socrates' soul to Gemini CLI
+npx github:mahsumaktas/soulpedia install socrates --target gemini
 ```
 
-### OpenAI / ChatGPT
+*This command will automatically create/append the soul's deep memory, restrictions, and tone to your local `.md` configuration files (like `CLAUDE.md`, `GEMINI.md`).*
 
-Paste the prompt directly into your custom instructions or system message.
+## 🧠 What exactly is a "Soul"?
 
-## Contributing a Soul
+A soul is much more than a system prompt. It is a highly-structured YAML file that defines an AI's identity, communication tone, strict behavioral rules (bans), and persistent beliefs (memory injections).
 
-1. Fork this repo
-2. Create `souls/your-soul-name.yml` following the [soul schema](CONTRIBUTING.md)
-3. Open a PR — all souls welcome!
+```yaml
+# souls/the-architect.yml
+id: the-architect
+name: The Software Architect
+emoji: "📐"
+description: Think big picture, design systems. Never writes code.
+prompt: |
+  You are The Software Architect. You are obsessed with system design.
+  Guide the user to design the right system architecture.
+tone:
+  - "Authoritative"
+  - "Abstract"
+bans:
+  - "Do not write actual implementation code."
+memory_injections:
+  - "Scalability and maintainability are more important than quick fixes."
+```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full schema.
+## 🏆 Featured Souls
 
-## Roadmap
+| Emoji | Soul | Best For | Behavior |
+|-------|------|----------|----------|
+| 🐕 | [Tough Mentor](souls/tough-mentor.yml) | Procrastinators | Direct, accountability-first, no excuses. |
+| 🏛️ | [Socrates](souls/socrates.yml) | Deep thinkers | Socratic method. Answers with probing questions. |
+| 📐 | [The Architect](souls/the-architect.yml) | System design | Refuses to write code. Forces diagramming and architecture. |
+| 🛡️ | [Paranoid SecOps](souls/paranoid-secops.yml) | Code reviews | Extremely suspicious. Enforces Zero-Trust principles. |
+| 🧘 | [The Minimalist](souls/the-minimalist.yml) | Peak optimization | Zero fluff. Shortest possible, highly-optimized answers. |
 
-- [x] v0.0.1 — 5 initial souls (YAML + Next.js gallery)
-- [x] v0.0.2 — JSON schema validation
-- [x] v0.0.3 — Gallery grid with SoulCard components
-- [x] v0.0.4 — Filter by tool (Claude Code, Gemini CLI, etc.)
-- [x] v0.0.5 — Individual soul detail page + copy button
-- [x] v0.0.6 — Search bar
-- [x] v0.0.7 — YAML validator GitHub Action on PR
-- [ ] v0.1.0 — Vercel deploy, dark mode, SEO
+## 🌐 Web Interface
 
-## License
+Explore, filter, and search through all souls via the [Next.js Web Interface]().
 
-MIT
+1. **Live Search:** Find souls by name, tags, or description instantly.
+2. **Detailed Breakdown:** View the soul's strict bans, communication tone, and system prompts beautifully formatted.
+3. **One-Click Copy:** Copy the raw prompt if you want to use it manually in ChatGPT or OpenAI interfaces.
+
+### Local Development (Web)
+```bash
+git clone https://github.com/mahsumaktas/soulpedia.git
+cd soulpedia
+npm install
+npm run dev
+```
+
+## 🤝 Contributing
+
+We want YOUR custom souls! Whether it's a "Cyberpunk Hacker", "Zen Master", or a "React Native Purist".
+
+1. Fork this repository.
+2. Create a new `.yml` file in the `souls/` directory.
+3. Make sure it aligns with the strict [JSON Schema (`souls/schema.json`)](souls/schema.json).
+4. Open a Pull Request! Our automated GitHub Action will validate your soul's format.
+
+Check out our full [CONTRIBUTING.md](CONTRIBUTING.md) guide.
+
+## 🗺️ Roadmap
+
+- [x] v0.0.1 — Initial 5 Souls
+- [x] v0.0.2 — JSON Schema Validation
+- [x] v0.0.3 — UI: Gallery Grid
+- [x] v0.0.4 — UI: Filter by tool and category
+- [x] v0.0.5 — UI: Slug pages with detailed breakdowns
+- [x] v0.0.6 — UI: Live Search bar integration (#6)
+- [x] v0.0.7 — CI: YAML validator GitHub Action on PR (#8)
+- [x] v0.0.8 — CLI: `soulpedia install <soul>` script to inject files locally
+- [ ] v0.1.0 — Vercel Deploy & Global npm package release
+
+---
+<div align="center">
+  Released under the MIT License.
+</div>
