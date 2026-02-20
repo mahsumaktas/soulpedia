@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Soul Schema",
+  "description": "Schema for defining an AI Persona (Soul)",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "emoji": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string" },
+    "tools": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "author": { "type": "string" },
+    "version": { "type": "string" },
+    "prompt": { "type": "string" },
+    "tone": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The specific communication tone of the persona."
+    },
+    "bans": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Things the persona is strictly forbidden from doing."
+    },
+    "memory_injections": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Persistent beliefs, rules, or facts the persona must always remember."
+    },
+    "variables": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Dynamic variables that the user can pass into the soul."
+    }
+  },
+  "required": ["id", "name", "prompt", "description"]
+}

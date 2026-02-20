@@ -4,11 +4,16 @@ export interface Soul {
   emoji: string;
   description: string;
   tools: string[];
-  category: "mentor" | "coach" | "technical" | "creative" | "cultural";
-  tags: string[];
+  category: string;
+  tags?: string[];
   prompt: string;
   author?: string;
+  version?: string;
+  tone?: string[];
+  bans?: string[];
+  memory_injections?: string[];
+  variables?: string[];
 }
 
-export type ToolFilter = "all" | "claude-code" | "gemini-cli" | "openai" | "cursor";
-export type CategoryFilter = "all" | "mentor" | "coach" | "technical" | "creative" | "cultural";
+export type ToolFilter = string;
+export type CategoryFilter = string;

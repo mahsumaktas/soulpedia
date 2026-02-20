@@ -2,6 +2,9 @@
   "name": "soulpedia",
   "version": "0.0.1",
   "private": false,
+  "bin": {
+    "soulpedia": "./bin/soulpedia.js"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +12,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "chalk": "^5.6.2",
     "clsx": "^2",
+    "commander": "^14.0.3",
     "js-yaml": "^4",
     "lucide-react": "^0.469",
     "next": "^15",
