@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-wiki-grayBg dark:bg-wiki-bgDark text-wiki-text dark:text-wiki-textDark font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  h1 {
+    @apply text-4xl pb-2 border-b border-wiki-border dark:border-wiki-borderDark mb-4;
+  }
+  
+  h2 {
+    @apply text-2xl pb-1 border-b border-wiki-border dark:border-wiki-borderDark mt-8 mb-4;
+  }
+  
+  h3 {
+    @apply text-xl mt-6 mb-3 font-bold;
+  }
+
+  a {
+    @apply text-wiki-blue dark:text-wiki-blueDark hover:underline cursor-pointer;
+  }
+
+  code {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1 py-0.5 rounded font-mono text-sm border border-gray-200 dark:border-gray-700;
+  }
+  
+  pre code {
+    @apply bg-transparent border-none p-0;
+  }
+}
+
+/* Wiki-specific components */
+@layer components {
+  .wiki-infobox {
+    @apply float-right ml-6 mb-4 p-4 bg-wiki-grayBg dark:bg-wiki-grayBgDark border border-wiki-border dark:border-wiki-borderDark rounded text-sm w-72;
+  }
+  .wiki-infobox th {
+    @apply text-left pr-4 py-1 align-top bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700;
+  }
+  .wiki-infobox td {
+    @apply py-1 border-b border-gray-200 dark:border-gray-700;
+  }
+  
+  .wiki-toc {
+    @apply inline-block bg-wiki-grayBg dark:bg-wiki-grayBgDark border border-wiki-border dark:border-wiki-borderDark p-4 mb-6 mt-2 rounded-sm;
+  }
+  
+  .wiki-nav-link {
+    @apply block py-1 text-wiki-blue dark:text-wiki-blueDark text-sm hover:underline cursor-pointer;
+  }
+  
+  .wiki-sidebar-heading {
+    @apply text-gray-500 dark:text-gray-400 uppercase text-xs tracking-wider mb-2 font-bold mt-6;
+  }
+}
