@@ -1,5 +1,6 @@
 import { souls } from "@/data/souls";
 import SoulGallery from "@/components/SoulGallery";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   return (
@@ -10,10 +11,17 @@ export default function Home() {
             <span className="text-2xl">🧠</span>
             <span className="font-bold text-xl text-gray-900 dark:text-white">soulpedia</span>
           </div>
-          <a href="https://github.com/mahsumaktas/soulpedia" target="_blank" rel="noopener noreferrer"
-            className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-            ⭐ GitHub
-          </a>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <a
+              href="https://github.com/mahsumaktas/soulpedia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            >
+              ⭐ GitHub
+            </a>
+          </div>
         </div>
       </header>
       <section className="max-w-6xl mx-auto px-4 py-16 text-center">
@@ -22,11 +30,17 @@ export default function Home() {
           Open-source persona library for Claude Code, Gemini CLI, and other AI tools.
         </p>
         <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
-          <span><strong className="text-gray-900 dark:text-white">{souls.length}</strong> souls</span>
+          <span>
+            <strong className="text-gray-900 dark:text-white">{souls.length}</strong> souls
+          </span>
           <span>·</span>
-          <span><strong className="text-gray-900 dark:text-white">4</strong> tools</span>
+          <span>
+            <strong className="text-gray-900 dark:text-white">4</strong> tools
+          </span>
           <span>·</span>
-          <span><strong className="text-gray-900 dark:text-white">MIT</strong></span>
+          <span>
+            <strong className="text-gray-900 dark:text-white">MIT</strong>
+          </span>
         </div>
       </section>
       <main className="max-w-6xl mx-auto px-4 pb-16">
