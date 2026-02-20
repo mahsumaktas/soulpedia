@@ -23,6 +23,18 @@ export default async function SoulArticlePage({ params }: { params: Promise<{ sl
   const soul = souls.find((s) => s.id === slug);
   if (!soul) notFound();
 
+  // Compile the full soul text for copying
+  let fullSoulText = `## Identity & Goal:\n${soul.prompt}\n`;
+  if (soul.tone && soul.tone.length > 0) {
+    fullSoulText += `\n## Communication Tone:\n- ${soul.tone.join('\n- ')}\n`;
+  }
+  if (soul.bans && soul.bans.length > 0) {
+    fullSoulText += `\n## Strict Bans:\n- ${soul.bans.join('\n- ')}\n`;
+  }
+  if (soul.memory_injections && soul.memory_injections.length > 0) {
+    fullSoulText += `\n## Core Beliefs (Memory Injections):\n- ${soul.memory_injections.join('\n- ')}\n`;
+  }
+
   return (
     <article className="animate-in fade-in duration-500 max-w-[1000px] mx-auto">
       <div className="flex items-center gap-4 mb-4">
@@ -90,6 +102,16 @@ export default async function SoulArticlePage({ params }: { params: Promise<{ sl
         <p className="mb-8">
           Users typically invoke this soul by injecting its YAML configuration into their local <code className="text-base">.md</code> system prompt files. Once active, the assistant inherits the soul&apos;s strict behavioral guidelines, communication tone, and fundamental beliefs (memory injections).
         </p>
+        
+        <div className="mb-8 p-6 bg-wiki-blue/5 dark:bg-wiki-blueDark/10 border border-wiki-blue/20 dark:border-wiki-blueDark/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mt-0 mb-1">Manual Usage</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Copy the compiled system prompt to paste it directly into ChatGPT or OpenAI.</p>
+          </div>
+          <div className="shrink-0 scale-110 origin-right">
+            <CopyButton text={fullSoulText.trim()} />
+          </div>
+        </div>
       </div>
 
       {/* Modern Table of Contents */}
