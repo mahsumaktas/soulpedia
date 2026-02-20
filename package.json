@@ -26,6 +26,8 @@
     "@types/js-yaml": "^4",
     "@types/node": "^22",
     "@types/react": "^19",
+    "ajv-cli": "^5.0.0",
+    "ajv-formats": "^3.0.1",
     "autoprefixer": "^10",
     "eslint": "^9",
     "eslint-config-next": "^15",
