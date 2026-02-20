@@ -63,12 +63,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full schema.
 ## Roadmap
 
 - [x] v0.0.1 — 5 initial souls (YAML + Next.js gallery)
-- [ ] v0.0.2 — JSON schema validation
-- [ ] v0.0.3 — Gallery grid with SoulCard components
-- [ ] v0.0.4 — Filter by tool (Claude Code, Gemini CLI, etc.)
-- [ ] v0.0.5 — Individual soul detail page + copy button
-- [ ] v0.0.6 — Search bar
-- [ ] v0.0.7 — YAML validator GitHub Action on PR
+- [x] v0.0.2 — JSON schema validation
+- [x] v0.0.3 — Gallery grid with SoulCard components
+- [x] v0.0.4 — Filter by tool (Claude Code, Gemini CLI, etc.)
+- [x] v0.0.5 — Individual soul detail page + copy button
+- [x] v0.0.6 — Search bar
+- [x] v0.0.7 — YAML validator GitHub Action on PR
 - [ ] v0.1.0 — Vercel deploy, dark mode, SEO
 
 ## License
