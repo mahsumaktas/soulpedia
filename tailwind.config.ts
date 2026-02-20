@@ -5,22 +5,21 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+        serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
         sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
       },
       colors: {
         wiki: {
           bg: "#ffffff",
-          bgDark: "#1a1a1a",
-          border: "#a2a9b1",
-          borderDark: "#444444",
-          blue: "#0645ad",
-          blueDark: "#6b9cf6",
-          red: "#d33",
-          text: "#202122",
-          textDark: "#eaecf0",
-          grayBg: "#f8f9fa",
-          grayBgDark: "#222222",
+          bgDark: "#0f1115",
+          border: "#e5e7eb",
+          borderDark: "#272a30",
+          blue: "#2563eb",
+          blueDark: "#60a5fa",
+          text: "#111827",
+          textDark: "#f9fafb",
+          grayBg: "#f9fafb",
+          grayBgDark: "#171a21",
         }
       }
     }

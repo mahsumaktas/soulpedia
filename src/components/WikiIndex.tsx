@@ -12,22 +12,27 @@ export default function WikiIndex({ souls, initialQuery = "" }: { souls: Soul[],
   });
 
   return (
-    <div>
+    <div className="p-5">
       <input 
         type="text" 
         placeholder="Filter within index (e.g. 'coding', 'strict')" 
-        className="w-full px-2 py-1 text-sm border border-wiki-border dark:border-wiki-borderDark bg-white dark:bg-gray-800 mb-4"
+        className="w-full px-4 py-2 text-sm border border-wiki-border dark:border-wiki-borderDark bg-gray-50 dark:bg-gray-800/50 rounded-lg mb-6 outline-none focus:ring-2 focus:ring-wiki-blue/50"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
       {filtered.length === 0 ? (
-        <p className="text-gray-500 italic text-sm">No articles match your search.</p>
+        <div className="text-center py-8 text-gray-500 italic text-sm border border-dashed border-gray-200 dark:border-gray-800 rounded-xl">
+          No articles match your search.
+        </div>
       ) : (
-        <ul className="list-disc pl-5 space-y-1 text-sm columns-1 sm:columns-2">
+        <ul className="space-y-3 text-sm columns-1 sm:columns-2 gap-8">
           {filtered.map(s => (
-            <li key={s.id} className="break-inside-avoid">
-              <Link href={`/souls/${s.id}`}>{s.name}</Link>
-              <span className="text-gray-500 text-xs ml-1">({s.category || 'Other'})</span>
+            <li key={s.id} className="break-inside-avoid flex items-center gap-2 group">
+              <span className="text-lg opacity-70 group-hover:opacity-100 transition-opacity">{s.emoji}</span>
+              <div className="flex-1 min-w-0">
+                <Link href={`/souls/${s.id}`} className="font-medium truncate block">{s.name}</Link>
+                <span className="text-gray-400 text-xs block uppercase tracking-wider mt-0.5">{s.category || 'General'}</span>
+              </div>
             </li>
           ))}
         </ul>

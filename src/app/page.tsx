@@ -6,87 +6,108 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
   const resolvedParams = await searchParams;
   const query = resolvedParams?.search || "";
   
-  // Get featured soul (e.g., the first one, or specific one)
   const featuredSoul = souls.find(s => s.id === "the-architect") || souls[0];
-  const newSouls = souls.slice(0, 3); // Just grabbing first 3 as 'new'
+  const newSouls = souls.slice(0, 3);
 
   return (
-    <div className="wiki-page">
-      {/* Top Main Page Title */}
-      <div className="mb-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900 p-6 text-center">
-        <h1 className="text-3xl font-serif mb-2 border-none">Welcome to Soulpedia,</h1>
-        <p className="text-lg text-gray-700 dark:text-gray-300">
-          the free <a href="https://github.com/mahsumaktas/soulpedia" target="_blank" className="font-bold">open-source persona encyclopedia</a> that anyone can edit.
-        </p>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-          Currently hosting <b>{souls.length}</b> distinct AI souls (personas) for CLI tools.
-        </p>
+    <div className="max-w-[1200px] mx-auto animate-in fade-in duration-500">
+      {/* Modern Welcome Hero */}
+      <div className="mb-10 text-center md:text-left md:flex items-center justify-between border-b border-wiki-border dark:border-wiki-borderDark pb-10">
+        <div>
+          <h1 className="border-none mb-2 lg:text-5xl tracking-tight text-gray-900 dark:text-white font-serif">Welcome to Soulpedia</h1>
+          <p className="text-xl text-gray-500 dark:text-gray-400 font-light max-w-2xl">
+            The modern <a href="https://github.com/mahsumaktas/soulpedia" target="_blank" className="font-medium text-gray-900 dark:text-gray-200 underline decoration-gray-300 dark:decoration-gray-700 underline-offset-4">open-source persona encyclopedia</a> that anyone can edit.
+          </p>
+        </div>
+        <div className="mt-6 md:mt-0 text-right hidden md:block">
+          <div className="text-4xl font-serif font-light text-wiki-blue dark:text-wiki-blueDark">{souls.length}</div>
+          <div className="text-sm uppercase tracking-widest text-gray-400 font-bold mt-1">Articles</div>
+        </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Left Column (Featured) */}
-        <div className="flex-1">
-          <div className="border border-green-200 dark:border-green-900/50 bg-green-50/50 dark:bg-green-900/10 mb-6">
-            <h2 className="bg-green-100 dark:bg-green-900/30 text-green-900 dark:text-green-300 font-bold px-3 py-1.5 m-0 border-b border-green-200 dark:border-green-900/50 text-base mt-0">
-              From today&apos;s featured article
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        {/* Left Column */}
+        <div className="xl:col-span-2 space-y-8">
+          
+          <section className="wiki-card">
+            <h2 className="wiki-card-header border-none mt-0 mb-0 flex items-center gap-2">
+              <span className="text-xl">🌟</span> Featured Article
             </h2>
-            <div className="p-4">
-              <div className="float-left mr-4 mb-2 text-6xl">{featuredSoul.emoji}</div>
-              <p className="mb-3">
-                <b>{featuredSoul.name}</b> is an advanced AI persona designed for system architecture. {featuredSoul.description} It strictly prohibits writing boilerplate code, focusing instead on high-level system design, scalability, and maintainability.
-              </p>
-              <p className="mb-3">
-                It operates under the <i>&quot;Zero Trust Architecture&quot;</i> philosophy and communicates in an authoritative, abstract tone. It is primarily used with Claude Code and Gemini CLI.
-              </p>
-              <p className="text-right text-sm">
-                <b><Link href={`/souls/${featuredSoul.id}`}>Full article...</Link></b>
-              </p>
+            <div className="p-6 md:p-8">
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="w-24 h-24 shrink-0 bg-gray-50 dark:bg-gray-800/50 rounded-2xl flex items-center justify-center text-5xl shadow-inner border border-gray-100 dark:border-gray-800">
+                  {featuredSoul.emoji}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-serif mt-0 mb-2">{featuredSoul.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                    <b>{featuredSoul.name}</b> is an advanced AI persona designed for system architecture. {featuredSoul.description} It strictly prohibits writing boilerplate code, focusing instead on high-level system design, scalability, and maintainability.
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                    It operates under the <i>&quot;Zero Trust Architecture&quot;</i> philosophy and communicates in an authoritative, abstract tone.
+                  </p>
+                  <Link href={`/souls/${featuredSoul.id}`} className="inline-flex items-center justify-center px-4 py-2 bg-wiki-blue hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm">
+                    Read full article
+                  </Link>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
 
-          <div className="border border-blue-200 dark:border-blue-900/50 bg-blue-50/50 dark:bg-blue-900/10">
-            <h2 className="bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-300 font-bold px-3 py-1.5 m-0 border-b border-blue-200 dark:border-blue-900/50 text-base mt-0">
-              Soulpedia Index (Browse Souls)
+          <section className="wiki-card">
+            <h2 className="wiki-card-header border-none mt-0 mb-0 flex items-center gap-2">
+              <span className="text-xl">📚</span> The Soulpedia Index
             </h2>
-            <div className="p-4">
-              <WikiIndex souls={souls} initialQuery={query} />
-            </div>
-          </div>
+            <WikiIndex souls={souls} initialQuery={query} />
+          </section>
+
         </div>
 
-        {/* Right Column (News / Did you know) */}
-        <div className="w-full lg:w-80 flex flex-col gap-6">
-          <div className="border border-purple-200 dark:border-purple-900/50 bg-purple-50/50 dark:bg-purple-900/10">
-            <h2 className="bg-purple-100 dark:bg-purple-900/30 text-purple-900 dark:text-purple-300 font-bold px-3 py-1.5 m-0 border-b border-purple-200 dark:border-purple-900/50 text-base mt-0">
-              Did you know...
+        {/* Right Column */}
+        <div className="space-y-8">
+          
+          <section className="wiki-card">
+            <h2 className="wiki-card-header border-none mt-0 mb-0 flex items-center gap-2">
+              <span className="text-xl">💡</span> Did you know...
             </h2>
-            <div className="p-4 text-sm">
-              <ul className="list-disc pl-5 space-y-2">
-                <li>...that you can inject a soul directly into your terminal by typing <code>npx soulpedia install socrates</code>?</li>
-                <li>...that <b>{newSouls[0].name}</b> {newSouls[0].emoji} is one of the most strictly regulated personas, refusing to give direct answers?</li>
-                <li>...that a &quot;Soul&quot; in Soulpedia isn&apos;t just a prompt, but a collection of <i>Bans</i>, <i>Tones</i>, and <i>Memory Injections</i>?</li>
+            <div className="p-5 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+              <ul className="space-y-4">
+                <li className="flex gap-3">
+                  <span className="text-wiki-blue mt-0.5">•</span>
+                  <span>...that you can inject a soul directly into your terminal by typing <code>npx soulpedia install socrates</code>?</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-wiki-blue mt-0.5">•</span>
+                  <span>...that <b>{newSouls[0].name}</b> {newSouls[0].emoji} is one of the most strictly regulated personas, refusing to give direct answers?</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-wiki-blue mt-0.5">•</span>
+                  <span>...that a &quot;Soul&quot; in Soulpedia isn&apos;t just a prompt, but a collection of <i>Bans</i>, <i>Tones</i>, and <i>Memory Injections</i>?</span>
+                </li>
               </ul>
-              <p className="text-right mt-3">
-                <b><a href="https://github.com/mahsumaktas/soulpedia/blob/main/README.md" target="_blank">Read the docs...</a></b>
-              </p>
             </div>
-          </div>
+          </section>
 
-          <div className="border border-orange-200 dark:border-orange-900/50 bg-orange-50/50 dark:bg-orange-900/10">
-            <h2 className="bg-orange-100 dark:bg-orange-900/30 text-orange-900 dark:text-orange-300 font-bold px-3 py-1.5 m-0 border-b border-orange-200 dark:border-orange-900/50 text-base mt-0">
-              Recently added
+          <section className="wiki-card">
+            <h2 className="wiki-card-header border-none mt-0 mb-0 flex items-center gap-2">
+              <span className="text-xl">⚡</span> Recently Added
             </h2>
-            <div className="p-4 text-sm">
-              <ul className="list-disc pl-5 space-y-2">
+            <div className="p-5 text-sm">
+              <ul className="space-y-3">
                 {newSouls.map(s => (
-                  <li key={s.id}><Link href={`/souls/${s.id}`}>{s.name}</Link></li>
+                  <li key={s.id} className="flex items-center justify-between group">
+                    <Link href={`/souls/${s.id}`} className="font-medium group-hover:text-wiki-blue transition-colors">
+                      {s.emoji} {s.name}
+                    </Link>
+                  </li>
                 ))}
               </ul>
-              <p className="text-right mt-3">
-                <b><a href="https://github.com/mahsumaktas/soulpedia/pulls" target="_blank">View all changes...</a></b>
-              </p>
+              <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 text-center">
+                <a href="https://github.com/mahsumaktas/soulpedia/pulls" target="_blank" className="text-wiki-blue hover:underline text-xs uppercase tracking-wider font-bold">View all changes →</a>
+              </div>
             </div>
-          </div>
+          </section>
+
         </div>
       </div>
     </div>

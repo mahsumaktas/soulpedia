@@ -4,31 +4,31 @@
 
 @layer base {
   body {
-    @apply bg-wiki-grayBg dark:bg-wiki-bgDark text-wiki-text dark:text-wiki-textDark font-sans;
+    @apply bg-wiki-bg dark:bg-wiki-bgDark text-wiki-text dark:text-wiki-textDark font-sans selection:bg-wiki-blue/20;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif text-wiki-text dark:text-wiki-textDark;
   }
 
   h1 {
-    @apply text-4xl pb-2 border-b border-wiki-border dark:border-wiki-borderDark mb-4;
+    @apply text-4xl lg:text-5xl font-medium tracking-tight mb-6;
   }
   
   h2 {
-    @apply text-2xl pb-1 border-b border-wiki-border dark:border-wiki-borderDark mt-8 mb-4;
+    @apply text-2xl lg:text-3xl font-medium tracking-tight mt-10 mb-4 pb-2 border-b border-wiki-border dark:border-wiki-borderDark;
   }
   
   h3 {
-    @apply text-xl mt-6 mb-3 font-bold;
+    @apply text-xl font-medium mt-8 mb-3;
   }
 
   a {
-    @apply text-wiki-blue dark:text-wiki-blueDark hover:underline cursor-pointer;
+    @apply text-wiki-blue dark:text-wiki-blueDark hover:text-blue-800 dark:hover:text-blue-300 transition-colors;
   }
 
   code {
-    @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1 py-0.5 rounded font-mono text-sm border border-gray-200 dark:border-gray-700;
+    @apply bg-gray-100 dark:bg-gray-800/80 text-gray-800 dark:text-gray-200 px-1.5 py-0.5 rounded-md font-mono text-sm border border-gray-200 dark:border-gray-700/50;
   }
   
   pre code {
@@ -36,27 +36,37 @@
   }
 }
 
-/* Wiki-specific components */
+/* Modern Wiki Components */
 @layer components {
+  .wiki-card {
+    @apply bg-white dark:bg-[#1c1f26] border border-wiki-border dark:border-wiki-borderDark rounded-2xl shadow-sm overflow-hidden transition-shadow hover:shadow-md;
+  }
+
+  .wiki-card-header {
+    @apply px-5 py-3 border-b border-wiki-border dark:border-wiki-borderDark bg-gray-50/50 dark:bg-[#1c1f26]/50 font-medium text-sm text-gray-600 dark:text-gray-300 uppercase tracking-wider;
+  }
+
   .wiki-infobox {
-    @apply float-right ml-6 mb-4 p-4 bg-wiki-grayBg dark:bg-wiki-grayBgDark border border-wiki-border dark:border-wiki-borderDark rounded text-sm w-72;
+    @apply lg:float-right lg:ml-8 mb-8 bg-white dark:bg-[#1c1f26] border border-wiki-border dark:border-wiki-borderDark rounded-2xl shadow-sm overflow-hidden text-sm w-full lg:w-80;
   }
+  
   .wiki-infobox th {
-    @apply text-left pr-4 py-1 align-top bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700;
+    @apply text-left pr-4 py-3 pl-5 align-top bg-gray-50 dark:bg-gray-800/30 border-b border-wiki-border dark:border-wiki-borderDark text-gray-500 dark:text-gray-400 font-medium w-1/3;
   }
+  
   .wiki-infobox td {
-    @apply py-1 border-b border-gray-200 dark:border-gray-700;
+    @apply py-3 pr-5 pl-2 border-b border-wiki-border dark:border-wiki-borderDark;
   }
   
   .wiki-toc {
-    @apply inline-block bg-wiki-grayBg dark:bg-wiki-grayBgDark border border-wiki-border dark:border-wiki-borderDark p-4 mb-6 mt-2 rounded-sm;
+    @apply inline-block bg-gray-50/50 dark:bg-[#1c1f26] border border-wiki-border dark:border-wiki-borderDark p-5 mb-8 mt-4 rounded-2xl shadow-sm min-w-[250px];
   }
   
   .wiki-nav-link {
-    @apply block py-1 text-wiki-blue dark:text-wiki-blueDark text-sm hover:underline cursor-pointer;
+    @apply flex items-center px-3 py-2 text-gray-600 dark:text-gray-300 text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer;
   }
   
   .wiki-sidebar-heading {
-    @apply text-gray-500 dark:text-gray-400 uppercase text-xs tracking-wider mb-2 font-bold mt-6;
+    @apply text-gray-400 dark:text-gray-500 uppercase text-xs tracking-wider mb-2 font-bold mt-8 px-3;
   }
 }
